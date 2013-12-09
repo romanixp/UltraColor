@@ -1,0 +1,61 @@
+#flip-tabs{
+	width:800px;
+	margin:20px auto; position:relative;
+}
+
+#tab-0{
+    -webkit-box-shadow: 1px 1px 10px 1px rgba(5, 0, 255, 0.7);
+box-shadow: 1px 1px 10px 1px rgba(5, 0, 255, 0.7);
+    
+}
+#tab-1{
+-webkit-box-shadow:  1px 1px 10px 1px rgba(0, 0, 0, 0.7);        
+        box-shadow:  1px 1px 10px 1px rgba(0, 0, 0, 0.7);        
+}
+        
+#flip-navigation{
+	margin:0 0 10px; padding:0; 
+	list-style:none;
+}
+#flip-navigation li{ 
+	display:inline; 
+}
+#flip-navigation li a{
+	text-decoration:none; padding:10px; 
+	margin-right:0px;
+	background:#f9f9f9;
+	color:#333; outline:none;
+	font-family:Arial; font-size:12px; text-transform:uppercase;
+}
+#flip-navigation li a:hover{
+	background:#999; 
+	color:#f0f0f0;
+}
+#flip-navigation li.selected a{
+	background:#999;
+	color:#f0f0f0;
+        
+        
+}
+#flip-container{  
+	width: 800px;
+	font-family:Arial; font-size:13px;
+}
+#flip-container div{ 
+	background:#fff;
+}
+#flip-container div ul{
+	background:#f9f9f9;
+	border:1px solid #f0f0f0;
+	margin:0; padding:15px 5px;
+	list-style-position:inside;
+}
+#flip-container div ul li{
+	padding:5px 0;
+}
+#flip-container div ul.orange{ -webkit-box-shadow: 1px 1px 10px 1px rgba(5, 0, 255, 0.7);
+box-shadow: 1px 1px 10px 1px rgba(5, 0, 255, 0.7);  }
+#flip-container div ul.green{  -webkit-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.7);
+box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.7);
+  }
+#flip-container div ul.blue{ background:#c9d9f9 }
