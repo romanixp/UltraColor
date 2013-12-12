@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -49,6 +50,60 @@
                 </tr>
             </form>
         </table>
+        <!-- No puedo enviar parametros "name" de este modo -->
+        <form name="form1"   method="GET" action="<c:url value='/a'/>" >
+
+            <input type="image" id="cod" name="cod" value="01" src="images/iconos/insert.ico">
+
+        </form>
+
+
+
+        <form name="form" method="POST" action="<c:url value='/a'/>">                             
+            <table border="1">                                
+                <tr>
+                    <td>Codigo</td>
+                    <td>Nombre</td>
+                    <td>Stock</td>
+                    <td>Unidad de medida</td>
+                    <td>Precio de compra</td>
+                    <td>Precio de venta</td>
+                    <td>Marca</td>
+                    <td>Fecha de vencimiento</td>                                        
+
+                    <td>Cantidad</td>
+                    <td>Unidad de compra</td>
+
+                    <td></td>
+                </tr>
+                
+                    <tr>                        
+                        <td> <input type="text" name="codigo" size="12" maxlength="30" I value="44" > </td>
+                        <td>${productoTO.getNombre() }</td>
+                        <td>${productoTO.getStock() }</td>
+                        <td>${productoTO.getUnidadMedida() }</td>
+                        <td>${productoTO.getPrecioCompra() }</td>
+                        <td>${productoTO.getPrecioVenta() }</td>
+                        <td>${productoTO.getMarca() }</td>
+                        <td>${productoTO.getFechaVencimiento() }</td>
+
+                        <td> <input type="text" name="cantidad" size="3" maxlength="3"  > </td>
+                        <td> <input type="text" name="unidad" size="12" maxlength="30" I > </td>
+
+                        
+                        <td>     
+                            <input type="submit" name="add" value="Agregar">
+                            <a href="<c:url value='/a?codigo=44&add=si'/>">
+                                <img widht="25px" height="25px"  title="Editar producto" alt="Agregar producto" src="<c:url value='/images/iconos/insert.ico'/>"/>
+                            </a>
+                        </td>  
+                    </tr>
+                
+            </table>
+        </form>
+
+
+
 
 
 

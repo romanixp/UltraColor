@@ -14,23 +14,32 @@ import java.util.ArrayList;
  * @author Sistemas
  */
 public class ProductoModel {
+
+    private ArrayList<ProductoTO> lista = new  ArrayList<ProductoTO>();
     
-        public ArrayList<ProductoTO> consultarProducto(String campo,String valor) throws Exception{
+ 
+    
+    
+    
+    
+    
+    public ArrayList<ProductoTO> consultarProducto(String campo, String valor) throws Exception {
         IProductoDAO productoDAO = DAOFactory.getInstance().getProductoDAO();
-        return productoDAO.consultarProducto(campo,valor);
+        return productoDAO.consultarProducto(campo, valor);
     } // consultarProducto   
-    
-    public void insertar(ProductoTO producto) throws Exception{
+
+    public void insertar(ProductoTO producto) throws Exception {
         IProductoDAO productoDAO = DAOFactory.getInstance().getProductoDAO();
         productoDAO.insertar(producto);
     }
-    public void eliminar(String codigo) throws Exception{
+
+    public void eliminar(String codigo) throws Exception {
         IProductoDAO productoDAO = DAOFactory.getInstance().getProductoDAO();
         productoDAO.eliminar(codigo);
     }
-    public  void actualizar(ProductoTO productoTO) throws Exception{        
+
+    public void actualizar(ProductoTO productoTO) throws Exception {
         IProductoDAO productoDAO = DAOFactory.getInstance().getProductoDAO();
         productoDAO.actualizar(productoTO);
     }
-    
 }

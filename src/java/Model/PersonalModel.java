@@ -14,6 +14,7 @@ import java.util.ArrayList;
  *
  * @author Sistemas
  */
+
 public class PersonalModel {
     public ArrayList<PersonalTO> consultarPersonal(String campo,String valor) throws Exception{
         IPersonalDAO personalDAO = DAOFactory.getInstance().getPersonalDAO();

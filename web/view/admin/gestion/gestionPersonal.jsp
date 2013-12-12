@@ -23,8 +23,17 @@
             <c:if test="${! empty requestScope.error}">
                 <div class="error" id="error">Error: ${requestScope.error}</div>
             </c:if>
+
             
+
             <h1>Gestion de personal</h1>
+            
+            <table width="318">
+                <tr>
+                    <td width="67">Usuario:</td>
+                    <td width="239">${sessionScope.personalTO.nombre}</td>
+                </tr>
+            </table> 
             <a href="<c:url value='/view/admin/main.jsp' />">Volver principal</a>
             <ul>
                 <li><a href="<c:url value='agregarPersonal.jsp'/>">Agregar personal</a></li>
@@ -32,11 +41,11 @@
                 <form name="form1" method="post" action="<c:url value='/ConsultarPersonal'/>">                             
                     <li>
                         <input type="text" name="valor" id="valor" value="" >                    
-                            <select name="campo" id="campo">
-                                <option value="DNI" >DNI</option>                    
-                                <option value="Nombre" >Nombre</option>                    
-                                <option value="Apellido" >Apellido</option>                    
-                            </select>
+                        <select name="campo" id="campo">
+                            <option value="DNI" >DNI</option>                    
+                            <option value="Nombre" >Nombre</option>                    
+                            <option value="Apellido" >Apellido</option>                    
+                        </select>
                         <input type="submit" name="buscarPersonal" id="buscarPersonal" value="consultar">
                     </li>
                 </form>
@@ -57,8 +66,8 @@
 
                     </tr>
                     <c:forEach var="personalTO" items="${requestScope.personalTO}">
-                        <tr>                        
-                            <td>${personalTO.getCodigo() }</td>
+                        <tr>      
+                            <td> <input type="text" name="codigo" size="12" maxlength="5" I value="${personalTO.getCodigo() }" > </td>                            
                             <td>${personalTO.getNombre() }</td>
                             <td>${personalTO.getApellidos() }</td>
                             <td>${personalTO.getDni() }</td>

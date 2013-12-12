@@ -34,17 +34,24 @@
             <table width="318">
                 <tr>
                     <td width="67">Usuario:</td>
-                    <td width="239">${sessionScope.proveedorTO.nombre}</td>
+                    <td width="239">${sessionScope.personalTO.nombre}</td>
+                </tr>
+                <tr>
+                    <td width="67">Correo</td>
+                    <td width="239">${sessionScope.usuarioTO.correo}</td>
                 </tr>
             </table>               
-                
 
-            <select name="proveedor">
-                <c:forEach var="proveedorTO" items="${requestScope.proveedorTO}">
-                    <option value="${proveedorTO.getCodigo() }">${proveedorTO.getNombre()}</option>
-                </c:forEach>  
-            </select>
-                
+
+            <c:if test="${! empty requestScope.mensaje}">
+                <div id="mensaje">Mensaje: ${requestScope.mensaje}</div>
+            </c:if>
+            <c:if test="${! empty requestScope.error}">
+                <div class="error" id="error">Error: ${requestScope.error}</div>
+            </c:if>
+
+
+
 
             <div id="flip-tabs" >
                 <ul id="flip-navigation" >
@@ -55,11 +62,59 @@
                 <div id="flip-container" >
                     <div>
                         <ul class="orange">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                            <li>Cras congue venenatis interdum</li>
-                            <li>Nunc quis tellus at eros aliquam hendrerit nec sed mauris</li>
-                            <li>Phasellus ut erat sapien. Suspendisse ultrices vestibulum</li>
-                            <li>Donec nec erat neque. Curabitur orci risus,</li>
+
+
+
+                            <form name="form111" method="POST" action="<c:url value='/Pedido'/>">                             
+                                <li>
+                                    <input type="text" name="valor" id="valor" value="" >                    
+                                    <select name="campo" id="campo">
+                                        <option value="Nombre" >Nombre</option>                    
+                                        <option value="Marca" >Marca</option>                    
+                                        <option value="Codigo" >Codigo</option>                    
+                                    </select>
+                                    <input type="submit" name="buscarPersonal" id="buscarPersonal" value="consultar">
+                                </li>
+                            </form>
+
+                            <form name="form" method="POST" action="<c:url value='/Pedido'/>">                             
+                                <table border="1">                                
+                                    <tr>
+                                        <td>Codigo</td>
+                                        <td>Nombre</td>
+                                        <td>Stock</td>
+                                        <td>Unidad de medida</td>
+                                        <td>Precio de compra</td>
+                                        <td>Precio de venta</td>
+                                        <td>Marca</td>
+                                        <td>Fecha de vencimiento</td>                                        
+
+                                        <td>Cantidad</td>
+                                        <td>Unidad de compra</td>
+
+                                        <td></td>
+                                    </tr>
+                                    <c:forEach var="productoTO" items="${requestScope.productoTO}">
+                                        <tr>                        
+                                            <td> <input type="text" name="codigo" size="5" maxlength="5" I value="${productoTO.getCodigo() }" > </td>
+
+                                            <td>${productoTO.getNombre() }</td>
+                                            <td>${productoTO.getStock() }</td>
+                                            <td>${productoTO.getUnidadMedida() }</td>
+                                            <td>${productoTO.getPrecioCompra() }</td>
+                                            <td>${productoTO.getPrecioVenta() }</td>
+                                            <td>${productoTO.getMarca() }</td>
+                                            <td>${productoTO.getFechaVencimiento() }</td>
+
+                                            <td> <input type="text" name="cantidad" size="3" maxlength="3" > </td>
+                                            <td> <input type="text" name="unidad" size="12" maxlength="30" I > </td>
+
+                                            <td><input type="submit" name="add" value="Agregar"> </td>
+
+                                        </tr>
+                                    </c:forEach>  
+                                </table>
+                            </form>
                         </ul>
                     </div>
                     <div>
@@ -82,7 +137,43 @@
             <p>&nbsp</p>
 
 
+            <p>Lista de Productos para pedir</p>
+            <table border="1">                                
+                <tr>
+                    <td>Codigo</td>
+                    <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td>Unidad de compra</td>                    
+                    <td></td>
 
+                </tr>
+                <c:forEach var="pedidoCompraTO" items="${sessionScope.canasta.getLista()}">
+                    <tr>
+                        <td>${pedidoCompraTO.getCodigo() }</td>
+                        <td>${pedidoCompraTO.getProdCodigo() }</td>                        
+                        <td>${pedidoCompraTO.getCantidad() }</td>
+                        <td>${pedidoCompraTO.getUnidad() }</td>
+                        <td>     
+                            <a href="<c:url value='/Pedido?codigo=${pedidoCompraTO.getCodigo()}&add=no'/>">
+                                <img widht="30px" height="30px"  title="Editar producto" alt="Quitar producto" src="<c:url value='/images/iconos/deleteProd.png'/>"/>
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+
+            <form method="POST" action="">
+                <p>Proveedor: 
+                    <select name="proveedor">
+                        <c:forEach var="proveedorTO" items="${requestScope.proveedorTO}">
+                            <option value="${proveedorTO.getCodigo() }">${proveedorTO.getNombre()}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p>
+                    <input type="submit" value="Pedir">
+                </p>
+            </form>
 
 
             <%@include file="/WEB-INF/include/footer.jsp" %>

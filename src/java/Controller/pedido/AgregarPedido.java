@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Controller.pedido;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,44 +16,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sistemas
  */
-@WebServlet(name = "a", urlPatterns = {"/a"})
-public class a extends HttpServlet {
+@WebServlet(name = "AgregarPedido", urlPatterns = {"/AgregarPedido"})
+public class AgregarPedido extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            
-//            String form = request.getParameter("form1");
-//            String codigo = request.getParameter("cod");
-//            
-//            out.println(form);
-//            out.println(codigo);
-            
-            String cod = request.getParameter("codigo");
-            String add = request.getParameter("add");
-            String unidad = request.getParameter("unidad");
-            String cantidad = request.getParameter("cantidad");
-            
-            out.println(cod);
-            out.println(add);
-            out.println(unidad);
-            out.println(cantidad);
-           
-        } finally {            
-            out.close();
-        }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

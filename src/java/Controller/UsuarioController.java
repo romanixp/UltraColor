@@ -60,7 +60,7 @@ public class UsuarioController extends HttpServlet {
                     PersonalTO personalTO = personalModel.consultarPorUsuario(usuarioTO.getCodigo());
                     session.setAttribute("personalTO", personalTO);
                 }
-                
+                //siempre hay una session de usuario
                 session.setAttribute("usuarioTO", usuarioTO);                
                 
             } else {

@@ -44,8 +44,11 @@ function inicio2() {
 function sugerencias(str) {
     var xmlhttp;
     
+    var name = $('input[name=cantidad]').val();
+    alert(name);
+    
     if (str.length == 0)
-    {
+    {        
         document.getElementById("txtHint").innerHTML = "";
         return;
     } 

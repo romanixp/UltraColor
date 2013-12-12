@@ -26,6 +26,8 @@ public class EditarPersonal extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        response.setContentType("text/html;charset=UTF-8");
         String confirm = request.getParameter("confirm");
 
         String destino = "";
@@ -53,7 +55,7 @@ public class EditarPersonal extends HttpServlet {
                 String correo = request.getParameter("correo");
                 String observaciones = request.getParameter("observaciones");
 
-
+                              
                 PersonalTO personalTO = new PersonalTO();
 
                 // Proceso
